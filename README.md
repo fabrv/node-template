@@ -24,3 +24,28 @@ npm run build
 ```bash
 npm start
 ```
+
+## Docker
+1. Build
+```bash
+docker build -t node-web-app .
+```
+2. Run image
+```bash
+docker run -p 8080:8080
+```
+  
+If you need to print the app output
+```bash
+docker ps
+docker logs <container id>
+```
+
+## Test service
+Navigate to http://localhost:8080 and it should return the following json:
+```json
+{
+    "status":200,
+    "message":"Node Template"
+}
+```
