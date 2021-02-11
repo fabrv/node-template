@@ -32,7 +32,7 @@ docker build -t node-web-app .
 ```
 2. Run image
 ```bash
-docker run -p 8080:8080
+docker run -p 8080:8080 -d node-web-app
 ```
   
 If you need to print the app output
