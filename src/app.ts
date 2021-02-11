@@ -9,12 +9,12 @@ import logger from 'morgan'
 const app = express()
 // Usings for the app
 app.use(logger('dev'))
-app.use(cors());
+app.use(cors())
 app.use(cookieParser())
 app.use(session({
   secret: 'secret',
   resave: true,
-	saveUninitialized: true
+  saveUninitialized: true
 }))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -24,10 +24,10 @@ app.get('/health', (_req, res) => {
   res.send(true)
 })
 
-//Routes
+// Routes
 app.use('/', indexRoutes())
 
-//505 Error handler
+// 505 Error handler
 app.use((error: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
   console.error(error)
   res.status(500).send({
@@ -37,7 +37,7 @@ app.use((error: any, req: express.Request, res: express.Response, next: express.
   })
 })
 
-//404 Error handler
+// 404 Error handler
 app.use((req: express.Request, res: express.Response) => {
   res.status(404).send({
     status: 404,

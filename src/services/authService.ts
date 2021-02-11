@@ -6,7 +6,7 @@ import { Request, Response, NextFunction } from 'express'
  * @param res Express Respnse
  * @param next Express Next Function
  */
-export function authenticated(req: Request, res: Response, next: NextFunction) {
+export function authenticated (req: Request, res: Response, next: NextFunction) {
   if (true) {
     next()
   } else {
@@ -24,7 +24,7 @@ export function authenticated(req: Request, res: Response, next: NextFunction) {
  * @param res Express Respnse
  * @param next Express Next Function
  */
-export function denyAll(req: Request, res: Response, next: NextFunction) {
+export function denyAll (req: Request, res: Response, next: NextFunction) {
   res.status(401).send({
     status: 401,
     error: 'Unauthorized',
@@ -36,7 +36,7 @@ export function denyAll(req: Request, res: Response, next: NextFunction) {
  * Middleware to only allow access to a certain role
  * @param role The authority to require and allow access
  */
-export function hasAuthority(role: string) {
+export function hasAuthority (role: string) {
   return (req: Request, res: Response, next: NextFunction) => {
     next()
   }

@@ -1,11 +1,11 @@
-import { Router } from "express"
-import { IndexService } from "./IndexController"
-import { authenticated } from "../../services/authService"
-import { validateQuery } from "../../services/validateQueryService"
+import { Router } from 'express'
+import { IndexController } from './IndexController'
+import { authenticated } from '../../services/authService'
+import { validateQuery } from '../../services/validateQueryService'
 
-export function indexRoutes(): Router {
+export function indexRoutes (): Router {
   const router = Router()
-  const indexService = new IndexService()  
+  const indexController = new IndexController()
 
   router.get('/', (req, res, next) => {
     res.send({
@@ -15,12 +15,12 @@ export function indexRoutes(): Router {
   })
 
   router.get('/sum', validateQuery(['a', 'b']), (req, res, next) => {
-    res.send(indexService.sum(parseInt(<string>req.query.a), parseInt(<string>req.query.b)))
+    res.send(indexController.sum(parseInt(<string>req.query.a), parseInt(<string>req.query.b)))
   })
 
   router.get('/:name', authenticated, (req, res, next) => {
-    res.status(200).send(indexService.hello(req.params.name))
-  })  
+    res.status(200).send(indexController.hello(req.params.name))
+  })
 
   return router
 }
