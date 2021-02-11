@@ -3,7 +3,7 @@ import cookieParser from 'cookie-parser'
 import session from 'express-session'
 import bodyParser from 'body-parser'
 import cors from 'cors'
-import { indexRoutes } from './routes/indexRoutes'
+import { indexRoutes } from './components/index/IndexRoutes'
 import logger from 'morgan'
 
 const app = express()
