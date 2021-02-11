@@ -6,7 +6,7 @@
 
 ## Run
 1. Clone and go to project directory
-2. Install dependencies; rull the following command:
+2. Install dependencies; run the following command:
 ```bash
 npm i
 ```
