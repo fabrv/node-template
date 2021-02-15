@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node dist",
     "build": "tsc",
-    "test": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha -r ts-node/register 'src/**/*.test.ts'",
+    "lint": "eslint src/**/*.ts",
+    "test": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha -r ts-node/register 'src/**/*.test.ts' && npm run lint",
     "watch": "nodemon"
   },
   "nodemonConfig": {

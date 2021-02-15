@@ -7,8 +7,10 @@ import { Request, Response, NextFunction } from 'express'
  * @param next Express Next Function
  */
 export function authenticated (req: Request, res: Response, next: NextFunction) {
+  next()
+
+  /* To Do condition with OneLogin Oauth Access
   if (true) {
-    next()
   } else {
     res.status(401).send({
       status: 401,
@@ -16,6 +18,7 @@ export function authenticated (req: Request, res: Response, next: NextFunction) 
       message: `Authentications is not included or has failed. ${req.method} ${req.url}`
     })
   }
+  */
 }
 
 /**
