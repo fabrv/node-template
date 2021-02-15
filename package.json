@@ -7,7 +7,7 @@
     "start": "node dist",
     "build": "tsc",
     "lint": "eslint src/**/*.ts",
-    "test": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha -r ts-node/register 'src/**/*.test.ts' && npm run lint",
+    "test": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' nyc mocha -r ts-node/register 'src/**/*.test.ts' && npm run lint",
     "watch": "nodemon"
   },
   "nodemonConfig": {
@@ -54,6 +54,7 @@
     "eslint-plugin-standard": "^5.0.0",
     "mocha": "^8.2.1",
     "nodemon": "^2.0.6",
+    "nyc": "^15.1.0",
     "ts-node": "^9.1.1"
   }
 }
