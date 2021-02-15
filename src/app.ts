@@ -5,6 +5,7 @@ import bodyParser from 'body-parser'
 import cors from 'cors'
 import { indexRoutes } from './components/index/IndexRoutes'
 import logger from 'morgan'
+import 'reflect-metadata'
 
 const app = express()
 // Usings for the app
