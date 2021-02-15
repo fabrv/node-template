@@ -37,4 +37,32 @@ describe('Index Route', () => {
         })
     })
   })
+
+  describe('GET /sum', () => {
+    it('Should return the sum of two random ints', () => {
+      const randa = Math.random() * 100
+      const randb = Math.random() * 100
+
+      chai.request(app)
+        .get(`/sum?a=${randa}&b=${randb}`)
+        .end((err, res) => {
+          if (err) throw err
+          res.should.have.status(200)
+          console.log(res.text)
+          assert.equal(res.text.toString(), (randa + randb).toString())
+        })
+    })
+
+    it('Should return NAN if a non number is sent as parameter', () => {
+      const randa = Math.random() * 100
+
+      chai.request(app)
+        .get(`/sum?a=${randa}&b=String`)
+        .end((err, res) => {
+          if (err) throw err
+          res.should.have.status(200)
+          assert.equal(res.text, 'NaN')
+        })
+    })
+  })
 })

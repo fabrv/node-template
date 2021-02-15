@@ -15,7 +15,7 @@ export function indexRoutes (): Router {
   })
 
   router.get('/sum', validateQuery(['a', 'b']), (req, res, next) => {
-    res.send(indexController.sum(parseInt(<string>req.query.a), parseInt(<string>req.query.b)))
+    res.send(indexController.sum(parseFloat(<string>req.query.a), parseFloat(<string>req.query.b)).toString())
   })
 
   router.get('/:name', authenticated, (req, res, next) => {
