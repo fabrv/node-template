@@ -9,7 +9,7 @@ import { Request, Response, NextFunction } from 'express'
 export function authenticated (req: Request, res: Response, next: NextFunction) {
   next()
 
-  /* To Do condition with OneLogin Oauth Access
+  /* To Do: condition with OneLogin Oauth Access
   if (true) {
   } else {
     res.status(401).send({
@@ -25,9 +25,9 @@ export function authenticated (req: Request, res: Response, next: NextFunction) 
  * *CAUTION* Middleware to deny all access to a route
  * @param req Express Request
  * @param res Express Respnse
- * @param next Express Next Function
+ * @param next (optional) Express Next Function
  */
-export function denyAll (req: Request, res: Response, next: NextFunction) {
+export function denyAll (req: Request, res: Response, _next?: NextFunction) {
   res.status(401).send({
     status: 401,
     error: 'Unauthorized',

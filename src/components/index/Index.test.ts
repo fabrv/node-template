@@ -39,7 +39,7 @@ describe('Index Route', () => {
   })
 
   describe('GET /sum', () => {
-    it('Should return the sum of two random ints', () => {
+    it('Should return the sum of two random numbers', () => {
       const randa = Math.random() * 100
       const randb = Math.random() * 100
 

@@ -29,12 +29,16 @@ app.use('/', indexRoutes())
 
 // 505 Error handler
 app.use((error: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
-  console.error(error)
-  res.status(500).send({
-    status: 500,
-    error: 'Internal Server Error',
-    message: error.message
-  })
+  if (error?.status != null) {
+    res.status(error.status).send(error)
+  } else {
+    console.error(error)
+    res.status(500).send({
+      status: 500,
+      error: 'Internal Server Error',
+      message: error.message
+    })
+  }
 })
 
 // 404 Error handler
