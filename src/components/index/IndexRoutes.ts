@@ -1,7 +1,7 @@
 import { Router } from 'express'
 import { IndexController } from './IndexController'
-import { authenticated } from '../../services/authService'
-import { validateQuery } from '../../services/validateQueryService'
+import { authenticated } from '../../services/auth/authService'
+import { validateQuery } from '../../services/paramValidation/paramValidationService'
 
 export function indexRoutes (): Router {
   const router = Router()
