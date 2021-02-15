@@ -24,12 +24,13 @@ export function validateQuery (params: string[]): (req: Request, res: Response, 
 }
 
 /**
- * Validates body paramateres, if the predicate function returns false or ay falsy value the API will return a 400 error.
+ * Validates body paramateres, if the predicate function returns any non true value the API will return a 400 error.
+ * Non true truthy values will return an error
  * @param predicate - A function that accepts the request body as an argument. The validateBody() method calls the predicate function to evaluate the body.
  */
 export function validateBody (predicate: (body: any) => boolean) {
   return (req: Request, res: Response, next: NextFunction) => {
-    if (predicate(req.body)) {
+    if (predicate(req.body) === true) {
       next()
     } else {
       next({

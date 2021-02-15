@@ -19,11 +19,6 @@ app.use(session({
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
-// Check if health is working
-app.get('/health', (_req, res) => {
-  res.send(true)
-})
-
 // Routes
 app.use('/', indexRoutes())
 
