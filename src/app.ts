@@ -5,7 +5,13 @@ import bodyParser from 'body-parser'
 import cors from 'cors'
 import { indexRoutes } from './components/index/IndexRoutes'
 import logger from 'morgan'
-import 'reflect-metadata'
+import { Sequelize } from 'sequelize'
+
+// Database connection
+const dbURL: string = process.env.DATABASE_URL ? process.env.DATABASE_URL : 'postgres://postgres:postgres@localhost:5432/template-db'
+const sequelize = new Sequelize(<string>process.env.dbURL)
+
+
 
 const app = express()
 // Usings for the app
