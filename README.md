@@ -12,7 +12,7 @@ npm i
 ```
 3. Run in watch mode
 ```bash
-npm run watch
+npm run start:live
 ```
 
 ## For production

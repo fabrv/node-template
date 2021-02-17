@@ -8,7 +8,7 @@
     "build": "tsc",
     "lint": "eslint src/**/*.ts",
     "test": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' nyc mocha -r ts-node/register 'src/**/*.test.ts' && npm run lint",
-    "watch": "nodemon"
+    "start:live": "nodemon"
   },
   "nodemonConfig": {
     "ignore": [

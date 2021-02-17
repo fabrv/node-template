@@ -1,6 +1,6 @@
 import { Router } from 'express'
 import { IndexController } from './IndexController'
-import { validateQuery } from '../../services/paramValidation/paramValidationService'
+import { validateQuery } from '../../utils/paramValidation/paramValidationService'
 
 export function indexRoutes (): Router {
   const router = Router()
