@@ -1,39 +1,19 @@
-import { AllowNull, Column, NotEmpty, PrimaryKey, Table } from 'sequelize-typescript'
-import { Model } from 'sequelize/types'
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm'
 
-export interface IUser {
-  id: number
-  firstname: string
-  lastname: string
-  email: string
-  password: string
-}
-
-@Table({
-  tableName: 'user'
-})
-export default class User extends Model implements IUser {
-  @PrimaryKey
-  @Column
+@Entity()
+export class User {
+  @PrimaryGeneratedColumn()
   id!: number
 
-  @AllowNull(false)
-  @NotEmpty
-  @Column
+  @Column()
   firstname!: string
 
-  @AllowNull(false)
-  @NotEmpty
-  @Column
+  @Column()
   lastname!: string
 
-  @AllowNull(false)
-  @NotEmpty
-  @Column
+  @Column()
   email!: string
 
-  @AllowNull(false)
-  @NotEmpty
-  @Column
+  @Column()
   password!: string
 }
