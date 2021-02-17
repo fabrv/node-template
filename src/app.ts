@@ -7,6 +7,7 @@ import { indexRoutes } from './components/index/IndexRoutes'
 import logger from 'morgan'
 import { createConnection } from 'typeorm'
 import { User } from './components/user/UserModels'
+import { userRoutes } from './components/user/UserRoutes'
 
 // Database connection
 const dbURL: string = process.env.DATABASE_URL ? process.env.DATABASE_URL : 'postgres://postgres:123456@localhost:5432/template-db'
@@ -48,6 +49,7 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
 // Routes
+app.use('/users', userRoutes())
 app.use('/', indexRoutes())
 
 // 505 Error handler

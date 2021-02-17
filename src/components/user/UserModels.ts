@@ -1,9 +1,17 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm'
+import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from 'typeorm'
+
+export interface IUser {
+  id?: number
+  firstname: string
+  lastname: string
+  email: string
+  password: string
+}
 
 @Entity()
-export class User {
+export class User extends BaseEntity implements IUser {
   @PrimaryGeneratedColumn()
-  id!: number
+  id?: number
 
   @Column()
   firstname!: string
