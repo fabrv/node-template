@@ -8,10 +8,22 @@ import logger from 'morgan'
 import { Sequelize } from 'sequelize'
 
 // Database connection
-const dbURL: string = process.env.DATABASE_URL ? process.env.DATABASE_URL : 'postgres://postgres:postgres@localhost:5432/template-db'
-const sequelize = new Sequelize(<string>process.env.dbURL)
+const dbURL: string = process.env.DATABASE_URL ? process.env.DATABASE_URL : 'postgres://postgres:postgres@db:5432/template-db'
+const sequelize = new Sequelize(dbURL)
 
+// This logic is necessary for the docker compose to work properly
+// Usually the database will take a little longer to start than the web service so a retry system is required
+// This is the way Docker recommends to do it, however a timeout can be configured directly on the docker-compose.yml
+function sqlConnection (maxAttempts = 5) {
+  sequelize.authenticate().then(() => {
+    console.log('Connection has been established successfully.')
+  }).catch((error) => {
+    console.error('Unable to connect to the database:', error)
+    setTimeout(() => sqlConnection(maxAttempts - 1), 3000)
+  })
+}
 
+sqlConnection()
 
 const app = express()
 // Usings for the app
