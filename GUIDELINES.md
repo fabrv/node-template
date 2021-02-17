@@ -36,10 +36,10 @@ This is the improved and recommended file structure that is included in the Node
 ├── src
 │   ├── index.ts
 │   ├── app.ts
-│   ├── services
-│   │     └── service
-│   │           ├── service.test.ts
-│   │           └── service.ts
+│   ├── utils
+│   │     └── utility
+│   │           ├── utility.test.ts
+│   │           └── utility.ts
 │   ├── components
 │   │     └── index
 │   │           ├── Index.test.ts
@@ -68,9 +68,9 @@ The individual files are the following:
 
 - `tsconfig.json` is a configuration file for Typescript.
 
-**Starting the application**
+**Starting the application**  
 All NodeJs services should have their starting script set in the `package.json`. Most developers,services and software including AWS Lambda, GCP App Engine, Heroku and even Visual Studio Code use the starting script `npm start` by default.
 
 Applications made on a transpiled language like ClojureScript, Purescript or Typescript must be built before starting, in this cases the build script should also be included in the `package.json`
 
-**Controllers as a class, Routes as a function**
+**Controllers as a class, Routes as a function**  
