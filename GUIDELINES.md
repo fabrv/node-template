@@ -164,7 +164,7 @@ TypeORM uses Typescripts native types to create the database model, this makes t
 **Documentation**  
 Official documentation for TypeORM can be found on: [https://typeorm.io](https://typeorm.io)
 
-**Usage** 
+**Usage**  
 Example of a model:
 ```ts
 @Entity()
@@ -209,13 +209,13 @@ Official documentation for TypeORM can be found on:
 - [https://mochajs.org/](https://mochajs.org/)
 - [https://www.chaijs.com/](https://mochajs.org/)
 
-**Usage**
+**Usage**  
 ```npm run test```
 
-![test coverage](testCoverage.png)
+![test coverage](testCoverage.png)  
 All routes and functions in the components need to be tested. And the percentage of lines and statements tested should exceed 80%
 
-**How to write tests**
+**How to write tests**  
 TODO
 
 ### 1.8 Packaging and implementation
