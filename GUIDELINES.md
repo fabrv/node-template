@@ -60,7 +60,7 @@ This new file structure fixes the issues mentioned above about the default Expre
 
 The individual files are the following:
 
-- `app.ts` is the application module and the `index.ts` is the file that starts the application; that is the NodeJs convention.
+- `app.ts` is the application module and the `index.ts` is the file that starts the application; that is the Node.js convention.
 
 - `package.json` holds all the relevant metadata for our project, like name, version and dependencies.  
 
@@ -69,7 +69,7 @@ The individual files are the following:
 - `tsconfig.json` is a configuration file for Typescript.
 
 **Starting the application**  
-All NodeJs services should have their starting script set in the `package.json`. Most developers,services and software including AWS Lambda, GCP App Engine, Heroku and even Visual Studio Code use the starting script `npm start` by default.
+All Node.js services should have their starting script set in the `package.json`. Most developers,services and software including AWS Lambda, GCP App Engine, Heroku and even Visual Studio Code use the starting script `npm start` by default.
 
 Applications made on a transpiled language like ClojureScript, Purescript or Typescript must be built before starting, in this cases the build script should also be included in the `package.json`
 
@@ -103,7 +103,7 @@ class Controller {
 Handlebars is simple template engine based on mustache. When a template is executed all expressions within a `{{}}` will be replaced with the values from an input object.
 
 **Documentation**  
-Official documentation for Express can be found on: [https://handlebarsjs.com/guide](https://handlebarsjs.com/guide)
+Official documentation for Handlebars can be found on: [https://handlebarsjs.com/guide](https://handlebarsjs.com/guide)
 
 **Usage**  
 Send rendered template to client:
@@ -156,5 +156,70 @@ router.get('/', (_req, res, _next) => {
 ### 1.4 Onboarding and offboarding
 
 ### 1.5 ORM selection and usage
+#### TypeORM
+TypeORM is an advanced object-relations-management module that runs in Node.js. As the name implies, TypeORM is meant to be used with TypeScript.
+
+TypeORM uses Typescripts native types to create the database model, this makes the database and program models seamless, it also offers superior scripting capabilities for migrations compared to Sequelize.
+
+**Documentation**  
+Official documentation for TypeORM can be found on: [https://typeorm.io](https://typeorm.io)
+
+**Usage** 
+Example of a model:
+```ts
+@Entity()
+export class User {
+  @PrimaryGeneratedColumn()
+  id?: number
+
+  @Column()
+  firstname!: string
+
+  @Column()
+  lastname!: string
+
+  @Column()
+  email!: string
+
+  @Column()
+  password!: string
+}
+```
+
+Example of a connection:
+```ts
+await createConnection({
+    type: 'postgres',
+    url: 'postgres://postgres:postgres@localhost:5432/postgres',
+    entities: [
+        User
+    ],
+    synchronize: true,
+    logging: false
+})
+```
 
 ### 1.6 Development, testing and production evironments handling
+
+### 1.7 Unit testing
+#### Mocha and Chai
+Mocha is a test suite library and Chai is an assertion library
+
+Official documentation for TypeORM can be found on: 
+- [https://mochajs.org/](https://mochajs.org/)
+- [https://www.chaijs.com/](https://mochajs.org/)
+
+**Usage**
+```npm run test```
+
+![test coverage](testCoverage.png)
+All routes and functions in the components need to be tested. And the percentage of lines and statements tested should exceed 80%
+
+**How to write tests**
+TODO
+
+### 1.8 Packaging and implementation
+### 1.9 OWASP policies
+### 1.10 Logging and monitoring
+### 1.11 Documentation for support
+### 1.12 Technical gap reduction policies
