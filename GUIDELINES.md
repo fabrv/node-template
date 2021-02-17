@@ -73,4 +73,88 @@ All NodeJs services should have their starting script set in the `package.json`.
 
 Applications made on a transpiled language like ClojureScript, Purescript or Typescript must be built before starting, in this cases the build script should also be included in the `package.json`
 
-**Controllers as a class, Routes as a function**  
+**Controllers as classes, Routes as functions**  
+Both the controllers and the routes need exterior dependecies, optimally you pass the depencies as a parameter.
+
+This will give you the flexibility to inject any compatible dependency.
+
+Routes only need to return a router object, so they are functions; Controllers need to return multiple methods and variables, so they are classes.
+
+```typescript
+// Routes
+function routes (dependency) {
+    const router: Router()
+    return router
+}
+
+// Controller
+class Controller {
+    dependency: Dependency
+    constructor (dependency) {
+        this.dependency = dependency
+    }
+
+    method () { ... }
+}
+```
+
+### 1.2 View template engine usage
+#### Handlebars
+Handlebars is simple template engine based on mustache. When a template is executed all expressions within a `{{}}` will be replaced with the values from an input object.
+
+**Documentation**  
+Official documentation for Express can be found on: [https://handlebarsjs.com/guide](https://handlebarsjs.com/guide)
+
+**Usage**  
+Send rendered template to client:
+##### Simple template
+```typescript
+router.get('/', (_req, res, _next) => {
+    res.render('index', { name: 'World' })
+})
+```
+```html
+<p>Hello {{name}}!</p>
+```
+##### Objects
+```typescript
+router.get('/', (_req, res, _next) => {
+    res.render('index', {
+        person: {
+            firstname: "Yehuda",
+            lastname: "Katz",
+        }
+    })
+})
+```
+```html
+<p>{{person.firstname}} {{person.lastname}}</p>
+```
+
+##### Arrays
+```typescript
+router.get('/', (_req, res, _next) => {
+    res.render('index', {
+        people: [
+            "Yehuda Katz",
+            "Alan Johnson",
+            "Charles Jolley",
+        ]
+    })
+})
+```
+```html
+<ul class="people_list">
+  {{#each people}}
+    <li>{{this}}</li>
+  {{/each}}
+</ul>
+```
+
+### 1.3 SSO integration
+
+### 1.4 Onboarding and offboarding
+
+### 1.5 ORM selection and usage
+
+### 1.6 Development, testing and production evironments handling

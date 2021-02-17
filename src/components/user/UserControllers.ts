@@ -1,15 +1,15 @@
 import { IUser, User } from './UserModels'
 
 export class UserController {
-  getUsers () {
+  getUsers (): Promise<User[]> {
     return User.find()
   }
 
-  getUser (id: number) {
+  getUser (id: number): Promise<User | undefined> {
     return User.findOne(id)
   }
 
-  createUser (user: IUser) {
+  createUser (user: IUser): Promise<User> {
     return User.create(user).save()
   }
 }
