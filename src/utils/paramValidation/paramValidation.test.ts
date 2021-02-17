@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 import chai from 'chai'
 import { createRequest, createResponse } from 'node-mocks-http'
-import { validateBody, validateQuery } from './paramValidationService'
+import { validateBody, validateQuery } from './paramValidation'
 
 const assert = chai.assert
 
