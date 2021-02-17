@@ -41,7 +41,19 @@ docker ps
 docker logs <container id>
 ```
 
+### Docker Compose
+This will start a Postgres database with the Node Template service
+```bash
+docker-compose up
+```
+
 ## Test service
+This will run the test suite
+```bash
+npm run test
+```
+
+## Run service
 Navigate to http://localhost:8080 and it should return the following json:
 ```json
 {
