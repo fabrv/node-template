@@ -12,6 +12,8 @@ services:
       - 5433:5432
   web:
     image: node-web-app
+    environment: 
+      DATABASE_URL: postgres://postgres:postgres@db:5432/template-db
     depends_on: 
       - db
     ports: 

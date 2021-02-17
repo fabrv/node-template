@@ -8,7 +8,7 @@ import logger from 'morgan'
 import { Sequelize } from 'sequelize'
 
 // Database connection
-const dbURL: string = process.env.DATABASE_URL ? process.env.DATABASE_URL : 'postgres://postgres:postgres@db:5432/template-db'
+const dbURL: string = process.env.DATABASE_URL ? process.env.DATABASE_URL : 'postgres://postgres:123456@localhost:5432/template-db'
 const sequelize = new Sequelize(dbURL)
 
 // This logic is necessary for the docker compose to work properly
